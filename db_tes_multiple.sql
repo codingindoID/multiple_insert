@@ -3,15 +3,15 @@
 
  Source Server         : lokal
  Source Server Type    : MySQL
- Source Server Version : 100406
+ Source Server Version : 100411
  Source Host           : localhost:3306
  Source Schema         : db_tes_multiple
 
  Target Server Type    : MySQL
- Target Server Version : 100406
+ Target Server Version : 100411
  File Encoding         : 65001
 
- Date: 06/08/2020 15:08:36
+ Date: 09/08/2020 00:14:24
 */
 
 SET NAMES utf8mb4;
@@ -32,18 +32,26 @@ CREATE TABLE `siswa`  (
 -- ----------------------------
 -- Records of siswa
 -- ----------------------------
-INSERT INTO `siswa` VALUES ('12355fghfgh', 'sdffg', 'sfgfdgsdfg', 'sfgsf');
-INSERT INTO `siswa` VALUES ('1246124', 'fsdf', 'fssdfsd', 'fsdfsdf');
-INSERT INTO `siswa` VALUES ('234234', 'dgsfg', 'sfgf', 'gsfgsdfg');
-INSERT INTO `siswa` VALUES ('a12345', 'agus', '098765632', 'lebuawu');
-INSERT INTO `siswa` VALUES ('as', 'sdf', 'sdfsdf', 'sdfsdf');
-INSERT INTO `siswa` VALUES ('dasda', 'asdas', 'asdasd', 'asdasd');
-INSERT INTO `siswa` VALUES ('dfgdfg3354', 'dasfsdf', 'asdfsdf', 'sdfsdf');
-INSERT INTO `siswa` VALUES ('dgdfg', 'dfgdf', 'dfgd', 'dfgdfgf');
-INSERT INTO `siswa` VALUES ('e', 'dsd', 'sd', 'sdsd');
-INSERT INTO `siswa` VALUES ('sdfsdf', 'sdfsd', 'sdfsdf', 'sdfsdfsd');
-INSERT INTO `siswa` VALUES ('sdfsdfs', 'sdfsdf', 'sdfsdf', 'ssdfsdf');
-INSERT INTO `siswa` VALUES ('sdg', 'dfgdfg', 'dhdfg', 'hdfghgh');
-INSERT INTO `siswa` VALUES ('sfsfs', 'sfsdf', 'sdfs', 'sdfsdfs');
+INSERT INTO `siswa` VALUES ('', '', '', '');
+INSERT INTO `siswa` VALUES ('dfgdfg', 'ddfgdfg', 'dfgdfgdfg', 'dfgdfg');
+
+-- ----------------------------
+-- Table structure for tb_filter
+-- ----------------------------
+DROP TABLE IF EXISTS `tb_filter`;
+CREATE TABLE `tb_filter`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `tgl_input` date NULL DEFAULT NULL,
+  `barang` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of tb_filter
+-- ----------------------------
+INSERT INTO `tb_filter` VALUES (1, '2020-08-05', 'kasur');
+INSERT INTO `tb_filter` VALUES (2, '2020-08-19', 'sabun');
+INSERT INTO `tb_filter` VALUES (3, '2020-08-26', 'tikar');
+INSERT INTO `tb_filter` VALUES (4, '2020-08-20', 'sapu');
 
 SET FOREIGN_KEY_CHECKS = 1;

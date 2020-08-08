@@ -25,7 +25,7 @@ class Contoh extends MY_Controller {
 		$cek = $this->M_contoh->post($data);
 		if(!$cek){
 			echo json_encode(array(
-				'success'=> 'terkirim'
+				'success'=> 'Data Berhasil diinput ke database'
 			));
 		}else{
 			echo json_encode(array(

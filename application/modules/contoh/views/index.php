@@ -6,6 +6,7 @@
 	<title></title>
 	<link rel="stylesheet" href="<?php echo base_url().'assets/bootstrap.min.css' ?>">
 	<script src="<?php echo base_url().'assets/jquery-3.5.1.min.js' ?>"></script>
+	<script src="<?php echo base_url().'assets/sweetalert.min.js' ?>"></script>
 </head>
 <body>
 	<div class="container mb-2">
@@ -20,6 +21,7 @@
 		<table class="table table-striped" id="data_table">
 			<thead>
 				<tr>
+					<th>#</th>
 					<th>No</th>
 					<th>NIS</th>
 					<th>Nama</th>
@@ -32,6 +34,7 @@
 				$no = 1;
 				foreach ($siswa as $siswa): ?>
 					<tr>
+						<td><input type="checkbox" name="record"></td>
 						<td><?php echo $no++ ?></td>
 						<td><?php echo $siswa->nis ?></td>
 						<td><?php echo $siswa->nama ?></td>
@@ -41,6 +44,10 @@
 				<?php endforeach ?>
 			</tbody>
 		</table>
+
+		<button id="bt_push" class="btn btn-primary">Upload Ke Database</button>
+		<button id="bt_hapus" class="btn btn-default">Hapus pilihan</button>
+		
 	</div>
 </body>
 </html>
@@ -60,8 +67,20 @@
 		var tes4 = $('#tes4').val();
 
 		var out = $('#data_table tbody:last-child');
+		var no = $('#data_table tbody tr').length+1;
 		
-		if(tes=='' || tes2 == '' || tes3 == ''){
+		out.append(
+			'<tr>'+
+			'<td><input type="checkbox" name="record"></td>'+
+			'<td>'+no+'</td>'+
+			'<td>'+tes+'</td>'+
+			'<td>'+tes2+'</td>'+
+			'<td>'+tes3+'</td>'+
+			'<td>'+tes4+'</td>'+
+			'</tr>');
+		clear();		
+
+		/*if(tes=='' || tes2 == '' || tes3 == ''){
 			alert('data tidak boleh kosong');
 		}else{
 			$.ajax({
@@ -71,7 +90,13 @@
 				data: {'nis': tes, 'nama' : tes2, 'telp' : tes3, 'alamat' : tes4},
 			})
 			.done(function(data) {
-				alert(data.success);
+				Swal.fire({
+					title: 'Sukses',
+					text: data.success,
+					icon: 'success',
+					confirmButtonColor: '#3085d6',
+					confirmButtonText: 'OK'
+				})
 
 				var no = $('#data_table tbody tr').length+1;
 				out.append(
@@ -81,14 +106,28 @@
 					'<td>'+tes2+'</td>'+
 					'<td>'+tes3+'</td>'+
 					'<td>'+tes4+'</td>'+
+					'<td><a href="#" id="remove">remove</a></td>'+
 					'</tr>');
 				clear();
 			})
 			.fail(function() {
-				alert('error post data');
+				Swal.fire({
+					icon: 'error',
+					title: 'Oops...',
+					text: data.success
+				})
 			}); //end ajax
-	
-		}
+
+		}*/
 		
+	});
+
+	/* Find and remove selected table rows */
+	$("#bt_hapus").click(function() {
+		$("table tbody").find('input[name="record"]').each(function() {
+			if ($(this).is(":checked")) {
+				$(this).parents("tr").remove();
+			}
+		});
 	});
 </script>
